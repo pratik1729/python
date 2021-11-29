@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+  <style>
+    body {
+        font-family: Ubuntu, sans-serif;
+    }
+
+    .float-container {
+        border: 3px solid #fff;
+    }
+
+    .float-left {
+        width: 15%;
+        float: left;
+      }
+    .float-right {
+        width: 85%;
+        float: left;
+        overflow-y: hidden;
+
+    }
+    /*style the search box*/
+    #filter {
+        width: 100%;
+        font-size: 18px;
+        padding: 11px;
+        border: 1px solid #ddd;
+    }
+    /*style the topics menu*/      
+    #subjects {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+    #subjects li a {
+        padding: 5px;
+        text-decoration: none;
+        color: black;
+        display: block
+      }
+
+    #subjects li a:hover {
+        background-color: #eee;
+      }
+    
+  </style>
+</head>
+<body>
+  
+ <div class="float-container">
+
+
+
+
+<div class="float-left" style="background-color:#bbb;">
+  <input type="text" id="filter" onkeyup="filter(this.id,'subjects')" placeholder="Search.." title="Type in a category">
+  <ul id="subjects">
+    <li><a onclick="newSrc('numpy.html')">Numpy</a></li>
+    <li><a onclick="newSrc('pandas.html')">Pandas</a></li>
+    <li><a onclick="newSrc('matplotlib.html')">Matplotlib</a></li>
+    <li><a onclick="newSrc('seaborn.html')">Seaborn</a></li>
+    <li><a onclick="newSrc('scipy.html')">Scipy</a></li>
+    <li><a onclick="newSrc('data-structures.html')">Data Structures</a></li>
+    <li><a onclick="newSrc('oops.html')">OOPS</a></li>
+    <li><a onclick="newSrc('sklearn.html')">Scikit Learn</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </ul>
+</div>
+<div class="float-right">
+  <iframe src="numpy.html" width="100%" height="100%" style="height: 95vh" id="main_frame"></iframe>
+   </div>
+
+</div>
+
+<script>
+  function newSrc(val) {
+  document.getElementById("main_frame").src=val;
+}
+
+function filter(filter_id,topics_id) {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById(filter_id);
+  filter = input.value.toUpperCase();
+  ul = document.getElementById(topics_id);
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+  </script>
+</body>
+</html>
